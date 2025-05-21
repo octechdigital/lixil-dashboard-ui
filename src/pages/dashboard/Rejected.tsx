@@ -8,14 +8,26 @@ import { RootState } from "../../store/store";
 import SectionAnim from "../../assets/lottie/SectionAnim";
 
 const campaignColumnDefs = [
-  { headerName: "Name", field: "name" },
-  { headerName: "Mobile", field: "mobile" },
-  { headerName: "Slab", field: "slab" },
-  { headerName: "State", field: "state" },
+  { headerName: "Sales Mobile", field: "mobile" },
+  { headerName: "Saler Name", field: "name" },
+  { headerName: "Architect Name", field: "name" },
+  { headerName: "Client Name", field: "name" },
+  { headerName: "Clinet Mobile", field: "mobile" },
+  { headerName: "Dealer Name", field: "name" },
+  { headerName: "Site Address", field: "state" },
+  { headerName: "invoice Number", field: "winAmount" },
+  { headerName: "invoice Value", field: "winAmount" },
   { headerName: "Win Amount", field: "winAmount" },
   { headerName: "Moderated By", field: "moderated_by" },
   { headerName: "Reason", field: "reason" },
   { headerName: "Date", field: "date" },
+  {
+      field: "view",
+      headerName: "View",
+      cellRenderer: (params: any) => (
+        <ViewButtonRenderer pageType="approvePage" props={params} />
+      ),
+    },
   {
     field: "review",
     headerName: "Review",

@@ -27,6 +27,7 @@ import API from "../../api";
 import { ThemeProvider } from "@emotion/react";
 import { useAppSelector } from "../../store/hooks";
 import { muiTheme } from "../../lib/style";
+import DownloadIcon from "@mui/icons-material/Download";
 
 interface UserApprovalProps {
   open: boolean;
@@ -122,6 +123,25 @@ const UserApproval: React.FC<UserApprovalProps> = ({
       .catch(console.log);
   };
 
+  const handleDownload = async (src: string) => {
+    try {
+      const response = await fetch(src);
+      const blob = await response.blob();
+      const url = URL.createObjectURL(blob);
+
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "media-file";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error("Error downloading the file:", error);
+    }
+  };
+
   const renderMedia = () => {
     const style = {
       width: "100%",
@@ -183,6 +203,40 @@ const UserApproval: React.FC<UserApprovalProps> = ({
               sx={{ borderRadius: ".5rem", boxShadow: 3 }}
             >
               <Box height={400}>{renderMedia()}</Box>
+              <Box
+                display="flex"
+                justifyContent="right   "
+                alignItems="center"
+                height={50}
+                sx={{
+                  // backgroundColor: "#f5f5f5",
+                  borderRadius: "0 0 .5rem .5rem",
+                }}
+              >
+                <IconButton
+                  onClick={() => handleDownload(mediaType === "video" ? mediaSrc : mediaSrc)}
+                  sx={{
+                    position: "relative",
+                    bottom: 8,
+                    right: 8,
+                    zIndex: 1,
+                    backgroundColor: "rgba(255, 255, 255, 0.7)",
+                    transition: "transform 0.3s ease, color 0.3s ease",
+
+                    "&:hover": {
+                      backgroundColor: "rgba(231, 231, 231, 0.9)",
+                      transform: "scale(1.2)", // increase icon size
+                      color: "blue", // change icon color
+                    },
+
+                    "& svg": {
+                      transition: "color 0.3s ease",
+                    },
+                  }}
+                >
+                  <DownloadIcon />
+                </IconButton>
+              </Box>
             </Grid>
 
             <Grid

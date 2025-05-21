@@ -8,11 +8,15 @@ import { RootState } from "../../store/store";
 import SectionAnim from "../../assets/lottie/SectionAnim";
 
 const pendingColumnDefs = [
-  { headerName: "Name", field: "name" },
-  { headerName: "Mobile", field: "mobile" },
-  { headerName: "Slab", field: "slab" },
-  { headerName: "State", field: "state" },
-  { headerName: "Win Amount", field: "winAmount" },
+  { headerName: "Sales Mobile", field: "mobile" },
+  { headerName: "Saler Name", field: "name" },
+  { headerName: "Architect Name", field: "name" },
+  { headerName: "Client Name", field: "name" },
+  { headerName: "Clinet Mobile", field: "mobile" },
+  { headerName: "Dealer Name", field: "name" },
+  { headerName: "Site Address", field: "state" },
+  { headerName: "invoice Number", field: "winAmount" },
+  { headerName: "invoice Value", field: "winAmount" },
   { headerName: "Date", field: "date" },
   {
     field: "view",

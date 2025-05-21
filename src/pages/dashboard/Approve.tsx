@@ -8,18 +8,22 @@ import SectionAnim from "../../assets/lottie/SectionAnim";
 import ViewButtonRenderer from "../../components/customElements/Buttons";
 
 const approvedColumnDefs = [
-  { headerName: "Name", field: "name" },
-  { headerName: "Mobile", field: "mobile" },
-  { headerName: "Slab", field: "slab" },
-  { headerName: "State", field: "state" },
-  { headerName: "Win Amount", field: "winAmount" },
+  { headerName: "Sales Mobile", field: "mobile" },
+  { headerName: "Saler Name", field: "name" },
+  { headerName: "Architect Name", field: "name" },
+  { headerName: "Client Name", field: "name" },
+  { headerName: "Clinet Mobile", field: "mobile" },
+  { headerName: "Dealer Name", field: "name" },
+  { headerName: "Site Address", field: "state" },
+  { headerName: "invoice Number", field: "winAmount" },
+  { headerName: "invoice Value", field: "winAmount" },
   { headerName: "Moderated By", field: "moderated_by" },
   { headerName: "Date", field: "date" },
   {
     field: "view",
     headerName: "View",
     cellRenderer: (params: any) => (
-      <ViewButtonRenderer pageType="pendingPage" props={params} />
+      <ViewButtonRenderer pageType="approvePage" props={params} />
     ),
   },
 ];
