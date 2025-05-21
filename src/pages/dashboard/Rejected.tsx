@@ -8,16 +8,15 @@ import { RootState } from "../../store/store";
 import SectionAnim from "../../assets/lottie/SectionAnim";
 
 const campaignColumnDefs = [
-  { headerName: "Sales Mobile", field: "mobile" },
-  { headerName: "Saler Name", field: "name" },
+  { headerName: "Sales Rep", field: "mobile" },
+  { headerName: "Sales Name", field: "name" },
   { headerName: "Architect Name", field: "name" },
   { headerName: "Client Name", field: "name" },
-  { headerName: "Clinet Mobile", field: "mobile" },
+  { headerName: "Client Mobile", field: "mobile" },
   { headerName: "Dealer Name", field: "name" },
   { headerName: "Site Address", field: "state" },
-  { headerName: "invoice Number", field: "winAmount" },
-  { headerName: "invoice Value", field: "winAmount" },
-  { headerName: "Win Amount", field: "winAmount" },
+  { headerName: "Invoice Number", field: "winAmount" },
+  { headerName: "Invoice Value", field: "winAmount" },
   { headerName: "Moderated By", field: "moderated_by" },
   { headerName: "Reason", field: "reason" },
   { headerName: "Date", field: "date" },
