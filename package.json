@@ -7,7 +7,7 @@
     "dev": "vite",
     "build:dev": "tsc -b && vite build --mode development",
     "build:prod": "tsc -b && vite build --mode production",
-    "deploy-dev": "npm run build:dev && rsync --verbose --recursive --progress dist/ thedigitalapps:/home/thedigitalapps/public_html/Hershey-dashboard/",
+    "deploy-dev": "npm run build:dev && rsync --verbose --recursive --progress dist/ thedigitalapps:/home/thedigitalapps/public_html/lixil-dashboard/",
     "deploy-prod": "npm run build:prod && rsync --verbose --recursive --progress dist/ ",
     "lint": "eslint .",
     "preview": "vite preview"
