@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import {
   BaseResponse,
@@ -86,8 +87,8 @@ class APIS {
       .finally();
   }
 
-  async getUserData(userId: string): Promise<GetUserDataResponse> {
-    return authorisedApiCall(`/admin/getUserInfo/${userId}`, {}, "GET")
+  async getUserData(invoiceId: string): Promise<GetUserDataResponse> {
+    return authorisedApiCall(`/admin/getUserInfo/${invoiceId}`, {}, "GET")
       .then(fetchHandler)
       .then(responseHelper)
       .catch(defaultCatch)
@@ -111,11 +112,11 @@ class APIS {
 
   async userAction(
     endpoint: "review" | "reject" | "approve",
-    userId: number,
+    invoiceId: number,
     payload: Record<string, any> = {}
   ): Promise<BaseResponse> {
     const finalPayload = {
-      userId,
+      invoiceId,
       ...payload,
     };
 

@@ -26,14 +26,14 @@
 | `mediaSrc` | `string`                          | URL of the media to be previewed          |
 | `userData` | `GenericRecord`                   | Object containing metadata about the user |
 | `pageType` | `"pendingPage" \| "rejectedPage"` | Determines the dialog's action set        |
-| `userId`   | `number`                          | User identifier for API actions           |
+| `invoiceId`   | `number`                          | User identifier for API actions           |
 
 ---
 
 ## API Calls
 
 - `API.getRejectReasonData()` – Fetches rejection reasons
-- `API.userAction(action, userId, payload?)` – Sends action request (approve, reject, review)
+- `API.userAction(action, invoiceId, payload?)` – Sends action request (approve, reject, review)
 
 ---
 
@@ -79,7 +79,7 @@ Based on the `mediaSrc` file type:
     submittedAt: "2025-04-09",
   }}
   pageType="pendingPage"
-  userId={123}
+  invoiceId={123}
 />
 ```
 

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import "./Button.scss";
 import API from "../../api";
 import { useState, memo } from "react";
@@ -35,13 +36,13 @@ const ViewButtonRenderer: React.FC<ViewButtonRendererProps> = ({
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const id = props?.data?.id;
+  const invoiceId = props?.data?.invoiceId;
   const mediaType = getMediaTypeFromSrc(props?.data?.url);
 
   const handleModifyClick = async () => {
     setLoading(true);
     try {
-      const resp = await API.getUserData(id);
+      const resp = await API.getUserData(invoiceId);
       console.log(resp);
       const user = resp.data ?? {};
       setData(user);
@@ -75,10 +76,10 @@ const ViewButtonRenderer: React.FC<ViewButtonRendererProps> = ({
       <UserApproval
         open={open}
         onClose={() => setOpen(false)}
-        mediaSrc={data?.url as string}
+        mediaSrc={data?.invoiceFileUrl as string}
         userData={data}
         pageType={pageType}
-        userId={id}
+        invoiceId={invoiceId}
       />
     </>
   );

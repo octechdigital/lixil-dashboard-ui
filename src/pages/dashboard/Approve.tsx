@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
 import Header from "../../components/header/Header";
 import API from "../../api";
@@ -8,17 +9,19 @@ import SectionAnim from "../../assets/lottie/SectionAnim";
 import ViewButtonRenderer from "../../components/customElements/Buttons";
 
 const approvedColumnDefs = [
-   { headerName: "Sales Rep", field: "mobile" },
-  { headerName: "Sales Name", field: "name" },
-  { headerName: "Architect Name", field: "name" },
-  { headerName: "Client Name", field: "name" },
-  { headerName: "Client Mobile", field: "mobile" },
-  { headerName: "Dealer Name", field: "name" },
-  { headerName: "Site Address", field: "state" },
-  { headerName: "Invoice Number", field: "winAmount" },
-  { headerName: "Invoice Value", field: "winAmount" },
+  { headerName: "Sales Mobile", field: "salesPersonMobile" },
+  { headerName: "Sales Name", field: "salesPersonName" },
+  { headerName: "Architect Mobile", field: "architectMobile" },
+  { headerName: "Architect Name", field: "architectName" },
+  { headerName: "Client Name", field: "clientAddress" },
+  { headerName: "Client Mobile", field: "clientNumber" },
+  { headerName: "Dealer Name", field: "dealerName" },
+  { headerName: "Dealer Code", field: "dealerCode" },
+  { headerName: "Site Address", field: "siteAddress" },
+  { headerName: "Invoice Number", field: "invoiceNumber" },
+  { headerName: "Invoice Value", field: "invoiceValue" },
+  { headerName: "Date", field: "createdDate" },
   { headerName: "Moderated By", field: "moderated_by" },
-  { headerName: "Date", field: "date" },
   {
     field: "view",
     headerName: "View",

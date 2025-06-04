@@ -73,7 +73,7 @@ Props passed:
 - `mediaSrc`: The user's media URL
 - `userData`: Full user data fetched from API
 - `pageType`: Used for conditional rendering inside modal
-- `userId`: Unique user ID
+- `invoiceId`: Unique user ID
 
 ---
 

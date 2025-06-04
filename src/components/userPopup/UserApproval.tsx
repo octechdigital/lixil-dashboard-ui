@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useState } from "react";
 import {
   Dialog,
@@ -35,7 +36,7 @@ interface UserApprovalProps {
   mediaSrc: string;
   userData: GenericRecord;
   pageType: "pendingPage" | "rejectedPage" | "approvePage";
-  userId: number;
+  invoiceId: number;
 }
 
 const UserApproval: React.FC<UserApprovalProps> = ({
@@ -44,7 +45,7 @@ const UserApproval: React.FC<UserApprovalProps> = ({
   mediaSrc,
   userData,
   pageType,
-  userId,
+  invoiceId,
 }) => {
   const mediaType = getMediaTypeFromSrc(mediaSrc);
   const [selectedAction, setSelectedAction] = useState<
@@ -60,7 +61,7 @@ const UserApproval: React.FC<UserApprovalProps> = ({
   const isHeaderRefresh = useAppSelector((state) => state.user.isHeaderRefresh);
   const showApproveReasonDropdown = userData.isApproveReason;
   const approvalReasonLabel = userData.approveReasonTitle;
-  const excludedUserFields = ["url", "isApproveReason", "approveReasonTitle"];
+  const excludedUserFields = ["url", "isApproveReason", "approveReasonTitle", "invoiceFileUrl"];
 
   useEffect(() => {
     if (selectedAction === "reject") {
@@ -91,7 +92,7 @@ const UserApproval: React.FC<UserApprovalProps> = ({
   const handleApprove = (reason?: string) => {
     const payload: Record<string, string> = {};
     if (reason) payload.approveReason = reason;
-    API.userAction("approve", userId, payload)
+    API.userAction("approve", invoiceId, payload)
       .then(() => {
         finishInteraction();
         dispatch(setIsRefreshed(true));
@@ -102,7 +103,7 @@ const UserApproval: React.FC<UserApprovalProps> = ({
   };
 
   const handleReject = (finalReason: string) => {
-    API.userAction("reject", userId, { rejectedReason: finalReason })
+    API.userAction("reject", invoiceId, { rejectedReason: finalReason })
       .then(() => {
         finishInteraction();
         dispatch(setIsRefreshed(true));
@@ -113,7 +114,7 @@ const UserApproval: React.FC<UserApprovalProps> = ({
   };
 
   const handleReview = () => {
-    API.userAction("review", userId)
+    API.userAction("review", invoiceId)
       .then(() => {
         finishInteraction();
         dispatch(setIsRefreshed(true));
@@ -131,7 +132,7 @@ const UserApproval: React.FC<UserApprovalProps> = ({
 
       const link = document.createElement("a");
       link.href = url;
-      link.download = "media-file";
+      link.download = "Media-File";
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
