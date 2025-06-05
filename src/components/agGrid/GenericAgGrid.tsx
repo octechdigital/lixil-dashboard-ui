@@ -95,7 +95,7 @@ const GenericAgGrid: React.FC<GenericAgGridProps> = ({
   }, [fetchTableData]);
 
   useEffect(() => {
-    // console.log("refreshStatus changed:", refreshStatus);
+    console.log("refreshStatus changed: rejection review line 98", refreshStatus);
     if (refreshStatus) fetchTableData();
   }, [refreshStatus, fetchTableData]);
 
