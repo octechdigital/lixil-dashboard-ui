@@ -143,7 +143,7 @@ const GenericAgGrid: React.FC<GenericAgGridProps> = ({
         <div style={gridStyle} className="ag-theme-alpine">
           <AgGridReact
             ref={gridRef}
-            rowData={rowData}
+            rowData={rowData || []}
             loading={loading}
             columnDefs={columnDefs}
             defaultColDef={defaultColDef}
