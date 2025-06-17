@@ -61,7 +61,7 @@ const UserApproval: React.FC<UserApprovalProps> = ({
   const isHeaderRefresh = useAppSelector((state) => state.user.isHeaderRefresh);
   const showApproveReasonDropdown = userData.isApproveReason;
   const approvalReasonLabel = userData.approveReasonTitle;
-  const excludedUserFields = ["url", "isApproveReason", "approveReasonTitle", "invoiceFileUrl"];
+  const excludedUserFields = ["url", "isApproveReason", "approveReasonTitle", "invoiceFileUrl", "invoiceId", "createdDate"];
 
   useEffect(() => {
     if (selectedAction === "reject") {

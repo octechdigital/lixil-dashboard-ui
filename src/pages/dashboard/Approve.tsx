@@ -9,17 +9,18 @@ import SectionAnim from "../../assets/lottie/SectionAnim";
 import ViewButtonRenderer from "../../components/customElements/Buttons";
 
 const approvedColumnDefs = [
-  { headerName: "Sales Mobile", field: "salesPersonMobile" },
+{ headerName: "Sales Mobile", field: "salesPersonMobile" },
   { headerName: "Sales Name", field: "salesPersonName" },
   { headerName: "Architect Mobile", field: "architectMobile" },
   { headerName: "Architect Name", field: "architectName" },
-  { headerName: "Client Name", field: "clientAddress" },
-  { headerName: "Client Mobile", field: "clientNumber" },
   { headerName: "Dealer Name", field: "dealerName" },
-  { headerName: "Dealer Code", field: "dealerCode" },
-  { headerName: "Site Address", field: "siteAddress" },
-  { headerName: "Invoice Number", field: "invoiceNumber" },
   { headerName: "Invoice Value", field: "invoiceValue" },
+  { headerName: "Date", field: "createdDate" },
+  // { headerName: "Client Name", field: "clientAddress" },
+  // { headerName: "Client Mobile", field: "clientNumber" },
+  // { headerName: "Dealer Code", field: "dealerCode" },
+  // { headerName: "Site Address", field: "siteAddress" },
+  // { headerName: "Invoice Number", field: "invoiceNumber" },
   { headerName: "Date", field: "createdDate" },
   { headerName: "Moderated By", field: "moderated_by" },
   {
