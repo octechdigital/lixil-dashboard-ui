@@ -61,7 +61,14 @@ const UserApproval: React.FC<UserApprovalProps> = ({
   const isHeaderRefresh = useAppSelector((state) => state.user.isHeaderRefresh);
   const showApproveReasonDropdown = userData.isApproveReason;
   const approvalReasonLabel = userData.approveReasonTitle;
-  const excludedUserFields = ["url", "isApproveReason", "approveReasonTitle", "invoiceFileUrl", "invoiceId", "createdDate"];
+  const excludedUserFields = [
+    "url",
+    "isApproveReason",
+    "approveReasonTitle",
+    "invoiceFileUrl",
+    "invoiceId",
+    "createdDate"
+  ];
 
   useEffect(() => {
     if (selectedAction === "reject") {
@@ -170,6 +177,38 @@ const UserApproval: React.FC<UserApprovalProps> = ({
     }
   };
 
+
+  interface InvoiceData {
+  architectName: string;
+  architectMobile: string;
+  salesPersonName: string;
+  salesPersonMobile: string;
+  invoiceDate: string;
+  invoiceNumber: string;
+  invoiceValue: number;
+  dealerName: string;
+  dealerCode: string;
+}
+
+// A helper function to map camelCase keys to human-readable labels
+const formatLabelMap: Record<keyof InvoiceData, string> = {
+  architectName: "Architect Name",
+  architectMobile: "Architect Mobile",
+  salesPersonName: "Salesperson Name",
+  salesPersonMobile: "Salesperson Mobile",
+  invoiceDate: "Invoice Date",
+  invoiceNumber: "Invoice Number",
+  invoiceValue: "Invoice Value",
+  dealerName: "Dealer Name",
+  dealerCode: "Dealer Code",
+};
+
+const formatLabel = (key: keyof InvoiceData): string => {
+  return formatLabelMap[key];
+};
+
+
+
   return (
     <ThemeProvider theme={muiTheme}>
       <Dialog
@@ -215,7 +254,9 @@ const UserApproval: React.FC<UserApprovalProps> = ({
                 }}
               >
                 <IconButton
-                  onClick={() => handleDownload(mediaType === "video" ? mediaSrc : mediaSrc)}
+                  onClick={() =>
+                    handleDownload(mediaType === "video" ? mediaSrc : mediaSrc)
+                  }
                   sx={{
                     position: "relative",
                     bottom: 8,
@@ -249,9 +290,16 @@ const UserApproval: React.FC<UserApprovalProps> = ({
                   .filter(([key]) => !excludedUserFields.includes(key))
                   .map(([key, value]) => (
                     <Box key={key} sx={{ flex: "1 1 calc(50% - 16px)" }}>
-                      <Typography variant="body2" gutterBottom>
+                      <Typography variant="body2" gutterBottom key={key}>
                         <strong style={{ textTransform: "capitalize" }}>
-                          {key}:
+                          {(
+                            Object.prototype.hasOwnProperty.call(
+                              formatLabelMap,
+                              key
+                            )
+                              ? formatLabel(key as keyof InvoiceData)
+                              : key
+                          )}:
                         </strong>{" "}
                         {String(value)}
                       </Typography>
